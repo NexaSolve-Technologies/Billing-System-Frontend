@@ -20,6 +20,7 @@ const defaultTheme = createTheme();
 
 export default function SignUp() {
   const [showPassword, setShowPassword] = React.useState(false);
+  const [errorMessage, setErrorMessage] = React.useState('');
   const [formData, setFormData] = React.useState({
     firstName : '',
     lastName : '',
@@ -46,7 +47,12 @@ export default function SignUp() {
     try {
         await registerUser(formData);
     } catch (err) {
-        console.error('Registration Failed : ', err);
+      if (err.response && err.response.status === 404) {
+        setErrorMessage('User Already exists.')
+      } else {
+        console.error('Sign In Failed :', err);
+        setErrorMessage('An error occurred while signing in. Please try again.');
+      }
     }
 };
 
@@ -157,6 +163,11 @@ export default function SignUp() {
                 />
               </Grid>
             </Grid>
+            {errorMessage && (
+              <Typography variant='body2' color="error" align='center'>
+                {errorMessage}
+              </Typography>
+            )}
             <Button
               type="submit"
               fullWidth

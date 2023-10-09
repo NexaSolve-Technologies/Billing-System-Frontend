@@ -14,6 +14,7 @@ import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import { signinUser } from '../../api/users';
 
 
 // TODO remove, this demo shouldn't need to reset the theme.
@@ -22,18 +23,38 @@ const defaultTheme = createTheme();
 
 export default function SignIn() {
   const [showPassword, setShowPassword] = React.useState(false);
+  const [errorMessage, setErrorMessage] = React.useState('');
+  const [formData, setFormData] = React.useState({
+    email : '',
+    password : ''
+  })
+  
 
   const handlePasswordVisibilityToggle = () => {
     setShowPassword(!showPassword);
   };
+  
+  const handleInputChange = (e) => {
+    const {name, value} = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    })
+  }
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    try {
+      await signinUser(formData)
+    } catch (err) {
+      if(err.response && err.response.status === 401) {
+        setErrorMessage('Invalid Credentials. Please Check your email and password'); 
+      } else {
+        console.error('SignIn failed', err);
+        setErrorMessage('An Error occured while signing in. Please try again');
+      }
+    }
+
   };
 
   return (
@@ -62,6 +83,8 @@ export default function SignIn() {
               id="email"
               label="Email Address"
               name="email"
+              value={formData.email}
+              onChange={handleInputChange}
               autoComplete="email"
               autoFocus
             />
@@ -70,6 +93,8 @@ export default function SignIn() {
               required
               fullWidth
               name="password"
+              value={formData.password}
+              onChange={handleInputChange}
               label="Password"
               type={showPassword ? 'text' : 'password'}
               id="password"
@@ -87,6 +112,11 @@ export default function SignIn() {
                 ),
               }}
             />
+            {errorMessage && (
+              <Typography variant='body2' color="error" align='center'>
+                {errorMessage}
+              </Typography>
+            )}
             <Button
               type="submit"
               fullWidth
