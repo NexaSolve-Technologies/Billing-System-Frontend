@@ -14,41 +14,41 @@ import InputAdornment from '@mui/material/InputAdornment';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-
-function Copyright(props) {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
+import {registerUser} from '../../api/users'
 
 const defaultTheme = createTheme();
 
 export default function SignUp() {
   const [showPassword, setShowPassword] = React.useState(false);
-
+  const [formData, setFormData] = React.useState({
+    firstName : '',
+    lastName : '',
+    userName : '',
+    phone : '',
+    email : '',
+    password : ''
+  })
+    
   const handlePasswordVisibilityToggle = () => {
     setShowPassword(!showPassword);
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      firstName: data.get('firstName'),
-      lastName: data.get('lastName'),
-      username: data.get('username'),
-      phoneNumber: data.get('phoneNumber'),
-      email: data.get('email'),
-      password: data.get('password'),
+  const handleInputChange = (e) => {
+    const { name, value } = e.target; 
+    setFormData({
+        ...formData,
+        [name]:value,
     });
-  };
+  } 
+  
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+        await registerUser(formData);
+    } catch (err) {
+        console.error('Registration Failed : ', err);
+    }
+};
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -78,6 +78,8 @@ export default function SignUp() {
                   fullWidth
                   id="firstName"
                   label="First Name"
+                  value={formData.firstName}
+                  onChange={handleInputChange}
                   autoFocus
                 />
               </Grid>
@@ -88,6 +90,8 @@ export default function SignUp() {
                   id="lastName"
                   label="Last Name"
                   name="lastName"
+                  value={formData.lastName}
+                  onChange={handleInputChange}
                   autoComplete="family-name"
                 />
               </Grid>
@@ -95,9 +99,11 @@ export default function SignUp() {
                 <TextField
                   required
                   fullWidth
-                  id="username"
+                  id="userName"
                   label="Username"
-                  name="username"
+                  name="userName"
+                  value={formData.userName}
+                  onChange={handleInputChange}
                   autoComplete="username"
                 />
               </Grid>
@@ -107,7 +113,9 @@ export default function SignUp() {
                   fullWidth
                   id="phoneNumber"
                   label="Phone Number"
-                  name="phoneNumber"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleInputChange}
                   autoComplete="tel"
                 />
               </Grid>
@@ -118,6 +126,8 @@ export default function SignUp() {
                   id="email"
                   label="Email Address"
                   name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
                   autoComplete="email"
                 />
               </Grid>
@@ -126,6 +136,8 @@ export default function SignUp() {
                   required
                   fullWidth
                   name="password"
+                  value={formData.password}
+                  onChange={handleInputChange}
                   label="Password"
                   type={showPassword ? 'text' : 'password'}
                   id="password"
@@ -162,7 +174,6 @@ export default function SignUp() {
             </Grid>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 5 }} />
       </Container>
     </ThemeProvider>
   );
