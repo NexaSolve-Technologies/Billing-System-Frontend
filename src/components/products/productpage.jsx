@@ -1,32 +1,79 @@
 import React, { useState } from 'react';
 import ProductCard from './productcard';
+import Cart from '../cart/cart';
+import PackageCard from '../packages/packagecard';
 import './productcard.css';
 
 function ProductPage() {
-    // Sample card data
-    const initialCards = [
-      { id: 1, title: 'Card 1', description: 'Description 1' },
-      { id: 2, title: 'Card 2', description: 'Description 2' },
-      { id: 3, title: 'Card 3', description: 'Description 3' },
-      { id: 4, title: 'Card 4', description: 'Description 4' },
-      { id: 5, title: 'Card 5', description: 'Description 5' },
-      // Add more card data as needed
-    ];
-  
-    const [cards] = useState(initialCards);
-  
-    const handleAddButtonClick = (cardData) => {
-      // In this example, we'll just log the card title
-      console.log(`Added ${cardData.title} to cart`);
-    };
-  
-    return (
-      <div className="card-page">
-        {cards.map((card) => (
-          <ProductCard key={card.id} cardData={card} onAddButtonClick={handleAddButtonClick} />
-        ))}
-      </div>
+  const initialProducts = [
+    { id: 1, title: 'Product 1', description: 'Description 1' },
+    { id: 2, title: 'Product 2', description: 'Description 2' },
+    { id: 3, title: 'Product 3', description: 'Description 3' },
+  ];
+
+  const initialPackages = [
+    { id: 4, title: 'Package 1', description: 'Combo of Product 1 and Product 2' },
+    { id: 5, title: 'Package 2', description: 'Combo of Product 2 and Product 3' },
+  ];
+
+  const [products] = useState(initialProducts);
+  const [packages] = useState(initialPackages);
+  const [cartItems, setCartItems] = useState([]);
+
+  const handleAddToCart = (itemData, quantity) => {
+    const existingItem = cartItems.find((item) => item.id === itemData.id);
+
+    if (existingItem) {
+      setCartItems((prevCartItems) =>
+        prevCartItems.map((item) =>
+          item.id === itemData.id
+            ? { ...item, quantity: item.quantity + quantity }
+            : item
+        )
+      );
+    } else {
+      setCartItems((prevCartItems) => [
+        ...prevCartItems,
+        { ...itemData, quantity },
+      ]);
+    }
+  };
+
+  const handleRemoveFromCart = (itemToRemove) => {
+    setCartItems((prevCartItems) =>
+      prevCartItems.filter((item) => item.id !== itemToRemove.id)
     );
-  }
-  
-  export default ProductPage;
+  };
+
+  return (
+    <div className="product-page">
+      <div className="product-section">
+        <h2>Products</h2>
+        <div className="product-container">
+          {products.map((product) => (
+            <ProductCard
+              key={product.id}
+              productData={product}
+              onAddToCart={handleAddToCart}
+            />
+          ))}
+        </div>
+      </div>
+      <div className="package-section">
+        <h2>Packages</h2>
+        <div className="package-container">
+          {packages.map((packageItem) => (
+            <PackageCard
+              key={packageItem.id}
+              packageData={packageItem}
+              onAddToCart={handleAddToCart}
+            />
+          ))}
+        </div>
+      </div>
+      <Cart cartItems={cartItems} onRemoveFromCart={handleRemoveFromCart} />
+    </div>
+  );
+}
+
+export default ProductPage;

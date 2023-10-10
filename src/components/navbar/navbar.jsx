@@ -20,10 +20,10 @@ function Navbar() {
     fontWeight: 'bold',
   };
 
-  const locationDropdownStyle = {
-    ...commonItemStyle,
-    padding: '5px',
-  };
+//   const locationDropdownStyle = {
+//     ...commonItemStyle,
+//     padding: '5px',
+//   };
 
   const searchStyle = {
     ...commonItemStyle,
@@ -47,14 +47,13 @@ function Navbar() {
   return (
     <nav style={navbarStyle}>
       <div style={logoStyle}>Your Logo</div>
-      <div style={commonItemStyle}>Sidebar</div>
-      <div style={locationDropdownStyle}>
+      {/* <div style={locationDropdownStyle}>
         <select>
           <option value="location1">Location 1</option>
           <option value="location2">Location 2</option>
           <option value="location3">Location 3</option>
         </select>
-      </div>
+      </div> */}
       <div style={searchStyle}>
         <input type="text" placeholder="Search" style={searchInputStyle} />
         <button type="button" style={searchButtonStyle}>

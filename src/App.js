@@ -4,7 +4,7 @@ import './App.css';
 import Registration from '../src/components/auth/Registration';
 import SignIn from './components/auth/SignIn';
 import Navbar from './components/navbar/navbar';
-import CardPage from './components/cards/cardpage';
+import ProductPage from './components/products/productpage';
 
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
         <Route path='/signup' element={<Registration />} />
         <Route path='/signin' element={<SignIn />} />
         <Route path='/Dashboard' element={<Navbar/>}/>
-        <Route path='/dashcard' element={<CardPage/>}></Route>
+        <Route path='/dashcard' element={<ProductPage/>}></Route>
       </Routes>
     </Router>
   )
