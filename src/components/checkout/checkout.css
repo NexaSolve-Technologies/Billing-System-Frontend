@@ -1,0 +1,106 @@
+/* Checkout.css */
+
+/* Container for the whole page */
+.checkout-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 10px;
+    gap: 10px;
+
+  }
+  
+  /* Customer information form */
+  .customer-form {
+    flex: 1;
+    padding: 20px;
+    border: 1px solid #FC8019;
+    border-radius: 5px;
+    background-color: #FFF2E8;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    height: 100%;
+  }
+  
+  .customer-form h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .customer-form div {
+    margin-bottom: 15px;
+  }
+  
+  .customer-form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .customer-form input[type="text"],
+  .customer-form input[type="email"],
+  .customer-form input[type="tel"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .customer-form button {
+    display: block;
+    background-color: #FC8019;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  /* Selected products */
+  .selected-products {
+    flex: 1;
+    padding: 20px;
+    border: 1px solid #FC8019;
+    border-radius: 5px;
+    background-color: #FFF2E8;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .selected-products h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .selected-products ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .selected-products li {
+    margin-bottom: 10px;
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 768px) {
+    .checkout-container {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .customer-form {
+      width: 100%;
+      max-width: 400px;
+    }
+  
+    .selected-products {
+      width: 100%;
+      max-width: 400px;
+    }
+  }
+
+  .slist{
+    justify-content: space-between  ;
+  }
+  .bold{
+    font-weight: bold;
+  }
