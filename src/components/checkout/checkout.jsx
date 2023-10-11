@@ -45,12 +45,16 @@ function Checkout({ selectedProducts }) {
 
   return (
     <div>
-      <Navbar />
+      <div>
+        <nav className='navb' >
+          <div>Your Logo</div>
+        </nav>
+      </div>
       <div className="checkout-container">
         
       <div className="selected-products">
-        <Typography component="h1" variant="h5">
-            Selected Products
+        <Typography >
+           <h2> Selected Products</h2>
           </Typography>
           <ul className='slist'>
             {selectedProducts ? (
@@ -92,14 +96,13 @@ function Checkout({ selectedProducts }) {
           </div>
           <div>
           <TextField
-                  required
                   fullWidth
-                  id="userName"
-                  label="Username"
-                  name="userName"
-                //   value={formData.userName}
-                //   onChange={handleInputChange}
-                  autoComplete="username"
+                  id="email"
+                  label="Email Address"
+                  name="email"
+                  // value={formData.email}
+                  // onChange={handleInputChange}
+                  autoComplete="email"
                 />
             {/* <label htmlFor="email">Email:</label>
             <input
@@ -149,6 +152,8 @@ const sampleProducts = [
   { id: 1, name: 'Product 1', price: 10.99 },
   { id: 2, name: 'Product 2', price: 19.99 },
   { id: 3, name: 'Product 3', price: 5.99 },
+  { id: 3, name: 'Product 3', price: 5.99 },
+  { id: 3, name: 'Product 3', price: 5.99 }
 ];
 
 export{sampleProducts} ;
