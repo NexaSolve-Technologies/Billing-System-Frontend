@@ -1,4 +1,4 @@
-.navb{
+/* .navb{
     
         display: flex;
         justify-content: space-between;
@@ -29,13 +29,12 @@
 }
 .dashboard-bg {
     background-image: url("../../assets/pexels-alexy-almond-3756523.jpg");
-    background-color: #f0f0f0; /* Fallback background color */
+    background-color: #f0f0f0;
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
-  }
-  
+  }*/
   
 /* body {
     background-image: url("../../assets/pexels-alexy-almond-3756523.jpg");
@@ -44,3 +43,61 @@
     background-attachment: fixed;
     background-position: center;
   } */
+  
+.dashboard-bg {
+  display: flex;
+  background-image: url('../../assets/pexels-alexy-almond-3756523.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+
+.navb {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #FC8019;
+  color: white;
+  padding: 1px 20px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+}
+@media (min-width:768px){
+  .navb{
+    padding: 20px;
+    width: 80%;
+  }
+}
+@media(min-width:1024px){
+  .navb{
+    width: 70%;
+  }
+}
+@media(min-width:1200px){
+  .navb{
+    width: 98%;
+  }
+}
+/* @media(min-width:3840px){
+  .navb{
+    width: 50%;
+  } for bigger screen remove is not required and also remove old css if not required
+} */
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 100%;
+  background-color: #FFF2E8;
+  border: 1px solid #FC8019;
+  color: #FC8019;
+  padding: 20px;
+  margin-top: 75px;
+}
+
+.options-list {
+  padding: 10px;
+}

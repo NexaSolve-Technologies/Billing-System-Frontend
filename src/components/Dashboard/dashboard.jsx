@@ -35,10 +35,10 @@ function Dashboard() {
         </nav>
       </div>
 
-      <div className='content' style={contentStyle}>
+      {/* <div className='content' style={contentStyle}> */}
         {/* Your main content goes here */}
         {/* For example, you can display user information, products, etc. */}
-      </div>
+      {/* </div> */}
 
       <div className='sidebar'>
         <div className='options-list'>
