@@ -8,6 +8,7 @@ import ProductPage from './components/products/productpage';
 import Checkout from './components/checkout/checkout';
 import { sampleProducts } from './components/checkout/checkout';
 import Dashboard from './components/Dashboard/dashboard';
+import NewProduct from './components/newproduct/newproduct';
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <Route path='/productpage' element={<ProductPage/>}></Route>
         <Route path='/checkout' element={<Checkout selectedProducts={sampleProducts}/>}/>
         <Route path='/'element={<Dashboard/>}/>
+        <Route path='/newproduct' element={<NewProduct/>}></Route>
 
       </Routes>
     </Router>

@@ -1,0 +1,112 @@
+
+/* Form container */
+.form-container {
+    width: 100%;
+    flex: 1;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #FFF2E8;
+    border: 1px solid #FC8019;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    top: 0px;
+  }
+  .form-container div {
+    margin-bottom: 5px;
+  }
+  
+  /* Form title */
+  .form-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  /* Form elements */
+  .form-group {
+    margin-bottom: 20px;
+
+  }
+  
+  .form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .form-group input[type="text"],
+  .form-group input[type="number"],
+  .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .form-group textarea {
+    min-height: 100px; /* Adjust the height as needed */
+  }
+  
+  /* File input */
+  .form-group input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  /* Submit button */
+  .form-button {
+    display: block;
+    background-color: #FC8019;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  
+  /* Validation error message */
+  .error-message {
+    color: #ff0000;
+    font-size: 14px;
+  }
+  /* .container-content{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 10px;
+    gap: 10px;
+    margin-top: 60px;
+    background-image: url(../../assets/pexels-alexy-almond-3756523.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height:90vh;
+    backdrop-filter: blur(5px); 
+  z-index: -1; 
+  } */
+  .container-content::before {
+    content: '';
+    background-image: url(../../assets/pexels-alexy-almond-3756523.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    filter: blur(8px); /* Adjust the blur intensity as needed */
+    z-index: -1;
+  }
+  
+  .container-content {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
