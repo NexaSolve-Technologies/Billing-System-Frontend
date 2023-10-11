@@ -12,13 +12,10 @@ function ProductPage(){
 
   const initialProducts = [
     { id: 1, title: 'Product 1', description: 'Description 1' },
-    { id: 2, title: 'Product 2', description: 'Description 2' },
-    { id: 3, title: 'Product 3', description: 'Description 3' },
   ];
 
   const initialPackages = [
     { id: 4, title: 'Package 1', description: 'Combo of Product 1 and Product 2' },
-    { id: 5, title: 'Package 2', description: 'Combo of Product 2 and Product 3' },
   ];
 
   const [products] = useState(initialProducts);
