@@ -1,8 +1,6 @@
 import axios from "axios";
 import { setToken } from "../utils/auth";
-
-const BASE_URL = 'http://localhost:3001';
-
+import { BASE_URL } from "../utils/url";
 // Function to register a NewUser;
 
 export const registerUser = async (userData) => {

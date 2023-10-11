@@ -1,10 +1,20 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import ProductCard from './productcard';
 import Cart from '../cart/cart';
 import PackageCard from '../packages/packagecard';
 import './productcard.css';
+import { getToken, removeToken } from '../../utils/auth';
 
 function ProductPage() {
+  const token = getToken('token'); 
+  const Navigate = useNavigate();
+    
+  useEffect(() => {
+    // if(!token){
+    //   
+    // }    
+  }, [token])
   const initialProducts = [
     { id: 1, title: 'Product 1', description: 'Description 1' },
     { id: 2, title: 'Product 2', description: 'Description 2' },
@@ -46,32 +56,36 @@ function ProductPage() {
   };
 
   return (
-    <div className="product-page">
-      <div className="product-section">
-        <h2>Products</h2>
-        <div className="product-container">
-          {products.map((product) => (
-            <ProductCard
-              key={product.id}
-              productData={product}
-              onAddToCart={handleAddToCart}
-            />
-          ))}
-        </div>
-      </div>
-      <div className="package-section">
-        <h2>Packages</h2>
-        <div className="package-container">
-          {packages.map((packageItem) => (
-            <PackageCard
-              key={packageItem.id}
-              packageData={packageItem}
-              onAddToCart={handleAddToCart}
-            />
-          ))}
-        </div>
-      </div>
-      <Cart cartItems={cartItems} onRemoveFromCart={handleRemoveFromCart} />
+    // <div className="product-page">
+    //   <div className="product-section">
+    //     <h2>Products</h2>
+    //     <div className="product-container">
+    //       {products.map((product) => (
+    //         <ProductCard
+    //           key={product.id}
+    //           productData={product}
+    //           onAddToCart={handleAddToCart}
+    //         />
+    //       ))}
+    //     </div>
+    //   </div>
+    //   <div className="package-section">
+    //     <h2>Packages</h2>
+    //     <div className="package-container">
+    //       {packages.map((packageItem) => (
+    //         <PackageCard
+    //           key={packageItem.id}
+    //           packageData={packageItem}
+    //           onAddToCart={handleAddToCart}
+    //         />
+    //       ))}
+    //     </div>
+    //   </div>
+    //   <Cart cartItems={cartItems} onRemoveFromCart={handleRemoveFromCart} />
+    // </div>
+    <div>
+      {/* <ProductCard /> */}
+      <PackageCard />
     </div>
   );
 }
