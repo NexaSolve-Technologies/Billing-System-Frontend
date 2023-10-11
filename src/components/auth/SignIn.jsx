@@ -50,7 +50,7 @@ export default function SignIn() {
       if(err.response && err.response.status === 401) {
         setErrorMessage('Invalid Credentials. Please Check your email and password'); 
       } else {
-        console.error('SignIn failed', err);
+        console.log('SignIn failed', err);
         setErrorMessage('An Error occured while signing in. Please try again');
       }
     }

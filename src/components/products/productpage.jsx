@@ -84,7 +84,7 @@ function ProductPage() {
     //   <Cart cartItems={cartItems} onRemoveFromCart={handleRemoveFromCart} />
     // </div>
     <div>
-      {/* <ProductCard /> */}
+      <ProductCard />
       <PackageCard />
     </div>
   );
