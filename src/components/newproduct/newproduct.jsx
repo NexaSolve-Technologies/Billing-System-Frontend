@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import { TextField, Button } from '@mui/material';
 import './newproduct.css';
+import { getToken } from '../../utils/auth';
+import { addProduct } from '../../api/products';
 
 function NewProduct() {
+  const token = getToken('token');
+  const [errorMessage, setErrorMessage] = useState('');
   const [product, setProduct] = useState({
     name: '',
     price: '',
@@ -25,18 +29,20 @@ function NewProduct() {
       image: imageFile,
     });
   };
-
+  
+    
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission here (e.g., send data to a server)
-
-    // Reset the form after submission
-    setProduct({
-      name: '',
-      price: '',
-      description: '',
-      image: null,
-    });
+    try {
+      console.log(token);
+      addProduct(token, product)
+        .then((data) => {
+          console.log(data);
+        })
+    } catch (err) {
+      console.error(err);
+      setErrorMessage('An error Occurred. Please try again later.')
+    }
   };
 
   return (
