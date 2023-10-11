@@ -1,0 +1,46 @@
+.navb{
+    
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #FC8019;
+        border: 1px solid black;
+        color: white;
+        padding: 15px;
+      
+      
+}
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 100%;
+    background-color: #FFF2E8;
+    border: 1px solid #FC8019;
+    color: #FC8019;
+    padding: 20px;
+    margin-top: 65px;
+  }
+
+.signinbtn{
+    background-color: #FFF2E8;
+    color: #FC8019;
+}
+.dashboard-bg {
+    background-image: url("../../assets/pexels-alexy-almond-3756523.jpg");
+    background-color: #f0f0f0; /* Fallback background color */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+  }
+  
+  
+/* body {
+    background-image: url("../../assets/pexels-alexy-almond-3756523.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+  } */

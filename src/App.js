@@ -7,6 +7,8 @@ import Navbar from './components/navbar/navbar';
 import ProductPage from './components/products/productpage';
 import Checkout from './components/checkout/checkout';
 import { sampleProducts } from './components/checkout/checkout';
+import Dashboard from './components/Dashboard/dashboard';
+
 
 function App() {
   return (
@@ -17,6 +19,7 @@ function App() {
         <Route path='/Dashboard' element={<Navbar/>}/>
         <Route path='/dashcard' element={<ProductPage/>}></Route>
         <Route path='/checkout' element={<Checkout selectedProducts={sampleProducts}/>}/>
+        <Route path='/'element={<Dashboard/>}/>
 
       </Routes>
     </Router>
