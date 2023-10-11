@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Cart({ cartItems, onRemoveFromCart }) {
+function Cart({ cartItems, onRemoveFromCart, onProceedToPay }) {
   return (
     <div className="cart">
       <h2>Shopping Cart</h2>
@@ -12,6 +12,7 @@ function Cart({ cartItems, onRemoveFromCart }) {
           </li>
         ))}
       </ul>
+      <button onClick={onProceedToPay}>Proceed to Pay</button>
     </div>
   );
 }
