@@ -9,9 +9,9 @@ import backgroundImg from'../../assets/pexels-alexy-almond-3756523.jpg'
 
 function Dashboard() {
 
-  const contentStyle = {
-    marginLeft: '220px',
-  };
+  // const contentStyle = {
+  //   marginLeft: '220px',
+  // };
 
   const listItemStyle = {
     marginBottom: '10px',

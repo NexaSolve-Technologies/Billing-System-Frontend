@@ -17,7 +17,7 @@ function App() {
         <Route path='/signup' element={<Registration />} />
         <Route path='/signin' element={<SignIn />} />
         <Route path='/Dashboard' element={<Navbar/>}/>
-        <Route path='/dashcard' element={<ProductPage/>}></Route>
+        <Route path='/productpage' element={<ProductPage/>}></Route>
         <Route path='/checkout' element={<Checkout selectedProducts={sampleProducts}/>}/>
         <Route path='/'element={<Dashboard/>}/>
 

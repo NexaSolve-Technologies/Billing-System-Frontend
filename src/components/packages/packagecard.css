@@ -1,48 +1,54 @@
-.card {
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 10px;
-    width: 200px;
-    margin: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+.package-card-container {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-}
-
-.card-content {
-    flex-grow: 1;
-}
-
-h2{
+    align-items: center;
+  }
+  
+  .package-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .package-card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 10px;
+    width: 250px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    text-align: left;
+  }
+  
+  h3 {
     margin: 0;
     font-size: 1.2rem;
-}
+  }
   
-p{
-    margin: 0;
-    margin-top: 10px;
+  p {
+    margin: 10px 0;
     font-size: 1rem;
-}
-
-input[type="number"]{
+  }
+  
+  input[type="number"] {
     width: 50px;
     padding: 5px;
-    margin-top: 10px;
     border: 1px solid #ccc;
-    border-radius: 3px;
-}
+    border-radius: 5px;
+  }
   
-.add-button{
-    background-color: #007bff;
-    color: white;
+  button {
+    background-color:#FC8019;
+    color: #fff;
     border: none;
     padding: 5px 10px;
-    margin-top: 10px;
     cursor: pointer;
-}
+    font-size: 1rem;
+    border-radius: 5px;
+  }
   
-.add-button:hover {
-    background-color: #0056b3;
-}
+  button:hover {
+    background-color: #FC8019;
+  }
   

@@ -14,8 +14,8 @@ function PackageCard({ packageData, onAddToCart }) {
         setPackages(data);
       })
       .catch((err) => {
-        console.error('Error while fetching Products', err)
-      })
+        console.error('Error while fetching Packages', err);
+      });
   }, [token]);
 
   console.log(packages);
@@ -25,18 +25,31 @@ function PackageCard({ packageData, onAddToCart }) {
     setQuantity(newQuantity);
   };
 
+  const handleAddToCart = (packageId) => {
+    // Implement your logic to add the package to the cart.
+    // You can send a request to your backend or update the state here.
+    console.log(`Added package with ID ${packageId} to the cart`);
+  };
+
   return (
-    <div>
-      <h2>Products List</h2>
-      <ul>
+    <div className="package-card-container">
+      <h2>Packages List</h2>
+      <div className="package-cards">
         {packages.map((pack) => (
-          <li key={pack._id}>
+          <div className="package-card" key={pack._id}>
             <h3>{pack.name}</h3>
-            <p>Description : {pack.description} </p>
-            <p>Price : {pack.customPrice}</p>            
-          </li>
+            <p>Description: {pack.description}</p>
+            <p>Price: {pack.customPrice}</p>
+            <input
+              type="number"
+              min="1"
+              value={quantity}
+              onChange={handleQuantityChange}
+            />
+            <button onClick={() => handleAddToCart(pack._id)}>Add to Cart</button>
+          </div>
         ))}
-      </ul>  
+      </div>
     </div>
   );
 }
