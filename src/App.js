@@ -23,7 +23,7 @@ function App() {
         <Route path='/checkout' element={<Checkout selectedProducts={sampleProducts}/>}/>
         <Route path='/'element={<Dashboard/>}/>
         <Route path='/newproduct' element={<NewProduct/>}></Route>
-        <Route path='/newproducts' element={<NewPackage/>}></Route>
+        <Route path='/newpackage' element={<NewPackage/>}></Route>
 
 
       </Routes>
