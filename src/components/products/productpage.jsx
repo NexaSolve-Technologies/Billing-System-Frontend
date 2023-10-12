@@ -12,37 +12,34 @@ function ProductPage(){
   const Navigate = useNavigate();
   const [cartItems,setCartItems]=useState([]);
   
-  const initialProducts = [
-    { id: 1, title: 'Product 1', description: 'Description 1' },
-  ];
-
-  const initialPackages = [
-    { id: 4, title: 'Package 1', description: 'Combo of Product 1 and Product 2' },
-  ];
-
-  const [products] = useState(initialProducts);
-  const [packages] = useState(initialPackages);
-  // add to cart func
+   // add to cart function
   const handleAddToCart =(itemData)=>{
-    const existingItem=cartItems.find((item)=>item.id===itemData.id);
-
-    if(existingItem){
-      setCartItems((prevCartItems)=>
-      prevCartItems.map((item)=>
-      item.id===itemData.id
-      ?{...item,quantity:item.quantity+1}
-      :item
-      )
-    );
-    }else{
-      setCartItems((prevCartItems)=>[...prevCartItems,{...itemData,quantity:1}]);
-    }
+  const existingItem = cartItems.find(item => item._id === itemData._id); 
+  if (existingItem) {
+    const updatedCart = cartItems.map(item => {
+      if(item._id === itemData._id) {
+        return {
+          ...item, // Spread all the quantites
+          quantity : item.quantity + 1 // Increase the quantity
+        };
+      }
+      return item;
+    });
+    setCartItems(updatedCart);
+  } else {
+    // If the item is not in the cart, add it with a quantity of 1
+    const newItem = {
+      ...itemData,
+      quantity : 1
+    };
+    setCartItems([...cartItems, newItem])
+  }
   };
-
+  
   const handleRemoveFromCart=(itemToRemove)=>{
-    setCartItems((prevCartItems)=>
-    prevCartItems.filter((item)=>item.id!==itemToRemove.id)
-    );
+    const updatedCart = cartItems.filter(item => item._id !== itemToRemove._id)
+    
+    setCartItems(updatedCart);
   };
 
   const handleProceedToPay = ()=>{
@@ -55,26 +52,14 @@ function ProductPage(){
     <div className="product-page">
       <div className="product-section">
         <h2>Products</h2>
-        <div className="product-container">
-          {products.map((product)=>(
-            <ProductCard
-            key={product.id}
-            productData={product}
-            onAddToCart={handleAddToCart}
-            />
-          ))}
+        <div className="product-container"> 
+            <ProductCard onAddToCart={handleAddToCart} />
         </div>
       </div>
       <div className="package-section">
         <h2>Packages</h2>
         <div className="package-container">
-          {packages.map((packageItem)=>(
-            <PackageCard
-            key={packageItem.id}
-            packageData={packageItem}
-            onAddToCart={handleAddToCart}
-            />
-          ))}
+            <PackageCard onAddToCart={handleAddToCart}/> 
         </div>
       </div>
       <div className='cart-on-productpage'>

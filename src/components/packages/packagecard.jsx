@@ -3,7 +3,7 @@ import './packagecard.css';
 import { getToken } from '../../utils/auth';
 import { FetchedPackages } from '../../api/packages';
 
-function PackageCard({ packageData, onAddToCart }) {
+function PackageCard({ onAddToCart }) {
   const [quantity, setQuantity] = useState(1);
   const [packages, setPackages] = useState([]);
   const token = getToken('token'); 
@@ -17,18 +17,14 @@ function PackageCard({ packageData, onAddToCart }) {
         console.error('Error while fetching Packages', err);
       });
   }, [token]);
-
-  console.log(packages);
-
+ 
   const handleQuantityChange = (e) => {
     const newQuantity = parseInt(e.target.value);
     setQuantity(newQuantity);
   };
 
-  const handleAddToCart = (packageId) => {
-    // Implement your logic to add the package to the cart.
-    // You can send a request to your backend or update the state here.
-    console.log(`Added package with ID ${packageId} to the cart`);
+  const handleAddToCart = (pack) => {
+    onAddToCart(pack);
   };
 
   return (
@@ -46,7 +42,7 @@ function PackageCard({ packageData, onAddToCart }) {
               value={quantity}
               onChange={handleQuantityChange}
             />
-            <button onClick={() => handleAddToCart(pack._id)}>Add to Cart</button>
+            <button onClick={() => handleAddToCart(pack)}>Add to Cart</button>
           </div>
         ))}
       </div>
