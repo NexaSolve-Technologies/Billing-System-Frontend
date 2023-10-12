@@ -12,7 +12,7 @@ function Cart({ cartItems, onRemoveFromCart, onProceedToPay }) {
           </li>
         ))}
       </ul>
-      <button onClick={onProceedToPay}>Proceed to Pay</button>
+      <button onClick={onProceedToPay}>Proceed to Checkout</button>
     </div>
   );
 }
