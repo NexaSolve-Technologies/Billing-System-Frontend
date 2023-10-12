@@ -15,6 +15,8 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import {registerUser} from '../../api/users'
+import backgroundImg from '../../assets/pexels-alexy-almond-3756523.jpg';
+
 
 const defaultTheme = createTheme();
 
@@ -57,12 +59,22 @@ export default function SignUp() {
 };
 
   return (
+    <Container component="main" maxWidth="100vw" sx={{
+      backgroundImage: `url(${backgroundImg})`,
+        backgroundSize: '100%',
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition:'center',
+        minHeight:'100vh',
+        marginTop:'0px',
+        backdropFilter:'blur(8px)',
+        // marginBottom:'90px',
+    }}>
     <ThemeProvider theme={defaultTheme}>
-      <Container component="main" maxWidth="xs">
+      <Container maxWidth="xs">
         <CssBaseline />
         <Box
           sx={{
-            marginTop: 8,
+            marginTop: 0,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
@@ -187,5 +199,6 @@ export default function SignUp() {
         </Box>
       </Container>
     </ThemeProvider>
+    </Container>
   );
 }

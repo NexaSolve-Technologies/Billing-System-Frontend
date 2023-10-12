@@ -33,7 +33,7 @@ p {
 }
 
 button {
-  background-color: #FC8019;
+  background-color: #007bff;
   color: #fff;
   border: none;
   padding: 5px 10px;
@@ -43,5 +43,5 @@ button {
 }
 
 button:hover {
-  background-color: #FC8019;
+  background-color: #0056b3;
 }

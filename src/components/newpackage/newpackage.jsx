@@ -81,9 +81,9 @@ function NewPackage(){
                 </nav>
             </div>
             <div className='main-container'>
-                <div className='product-card-container'>
+                <div className='add-product-card'>
                     <h2>Products List</h2>  
-                    <div className='product-cards'>
+                    <div className='add-product-cards'>
                         {products.map((product) => (
                         <div className='product-card' key={product._id}>
                             <h3>{product.name}</h3>
