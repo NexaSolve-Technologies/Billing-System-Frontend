@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
+import './cart.css'
 
 function Cart({ cartItems,onRemoveFromCart, onProceedToPay }) {  
      
