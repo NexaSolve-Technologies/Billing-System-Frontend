@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import Navbar from '../navbar/navbar';
 import './checkout.css';
 import Avatar from '@mui/material/Avatar';
@@ -20,7 +21,9 @@ function Checkout({ selectedProducts }) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
-
+  const location = useLocation();
+  const cartItems = location.state.cart
+  
   const handleNameChange = (e) => {
     setName(e.target.value);
   };
@@ -39,7 +42,7 @@ function Checkout({ selectedProducts }) {
   };
 
   const calculateTotalPrice = () => {
-    return selectedProducts.reduce((total, product) => total + product.price, 0);
+    return cartItems.reduce((total, product) => total + product.price, 0);
   };
 
 
@@ -57,9 +60,9 @@ function Checkout({ selectedProducts }) {
            <h2> Selected Products</h2>
           </Typography>
           <ul className='slist'>
-            {selectedProducts ? (
-              selectedProducts.map((product) => (
-                <li className='slist' key={product.id}> <span>{product.name}</span> - <span>${product.price}</span></li>
+            {cartItems ? (
+              cartItems.map((product) => (
+                <li className='slist' key={product._id}> <span>{product.name}</span> - <span>${product.price}</span></li>
               ))
             ) : (
               <p>No selected products.</p>

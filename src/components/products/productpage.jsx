@@ -40,13 +40,7 @@ function ProductPage(){
     const updatedCart = cartItems.filter(item => item._id !== itemToRemove._id)
     
     setCartItems(updatedCart);
-  };
-
-  const handleProceedToPay = ()=>{
-    // payment page ka navigation
-    // filhal payment
-    Navigate('/payment');
-  };
+  }; 
 
   return(
     <div className="product-page">
@@ -63,7 +57,7 @@ function ProductPage(){
         </div>
       </div>
       <div className='cart-on-productpage'>
-      <Cart cartItems={cartItems} onRemoveFromCart={handleRemoveFromCart} onProceedToPay={handleProceedToPay}/>
+      <Cart cartItems={cartItems} onRemoveFromCart={handleRemoveFromCart} />
       </div>
     </div>
   );

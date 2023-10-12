@@ -1,8 +1,13 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import './cart.css'
 
-function Cart({ cartItems,onRemoveFromCart, onProceedToPay }) {  
+function Cart({ cartItems,onRemoveFromCart }) {  
+  const Navigate = useNavigate();
+  const handleProceedToCheckout = () => {
+    Navigate('/checkout', { state : { cart : cartItems}});
+  }
      
   return (
     <div className="cart">
@@ -15,7 +20,7 @@ function Cart({ cartItems,onRemoveFromCart, onProceedToPay }) {
           </li>
         ))}
       </ul>
-      <button onClick={onProceedToPay}>Proceed to Checkout</button>
+      <button onClick={() => handleProceedToCheckout()}>Proceed to Checkout</button>
     </div>
   );
 }
