@@ -89,15 +89,15 @@ function NewPackage(){
 
     return(
         <div className='newpackage-page'>
-             <div className='nav-div'>
+            <div className='nav-div'>
                 <nav className='navb' >
                 <div>Your Logo</div>
                 </nav>
             </div>
             <div className='main-container'>
-                <div className='add-product-card'>
+                <div className='product-card-container'>
                     <h2>Products List</h2>  
-                    <div className='add-product-cards'>
+                    <div className='product-cards'>
                         {products.map((product) => (
                         <div className='product-card' key={product._id}>
                             <h3>{product.name}</h3>
@@ -109,7 +109,7 @@ function NewPackage(){
                         ))}
                     </div>
                 </div>
-                <div className='selected-products'>
+                <div className='selected-items'>
                     <h2>Selected Products</h2>
                         {selectedProducts.map((product, index) => (
                             <div key={index} className='selected-product-item'>

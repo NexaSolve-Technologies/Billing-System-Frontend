@@ -36,12 +36,7 @@ function PackageCard({ onAddToCart }) {
             <h3>{pack.name}</h3>
             <p>Description: {pack.description}</p>
             <p>Price: {pack.price}</p>
-            <input
-              type="number"
-              min="1"
-              value={quantity}
-              onChange={handleQuantityChange}
-            />
+            
             <button onClick={() => handleAddToCart(pack)}>Add to Cart</button>
           </div>
         ))}

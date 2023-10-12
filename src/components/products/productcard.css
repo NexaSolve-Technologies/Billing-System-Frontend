@@ -3,13 +3,21 @@
   justify-content: flex-start;
   flex-direction: column;
   align-items: center;
+  flex: 1;
+    padding: 10px;
+    border: 1px solid #FC8019;
+    border-radius: 5px;
+    background-color: #FFF2E8;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    height: auto;
 }
 
-/* .product-cards {
+
+.product-cards {
   display: flex;
-  flex-direction: column;
-  align-items: left;
-} */
+  flex-wrap: wrap;
+  justify-content: center;
+}
 
 .product-card {
   border: 1px solid #ccc;
@@ -43,5 +51,5 @@ button {
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #FC8019;
 }

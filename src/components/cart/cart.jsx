@@ -12,14 +12,17 @@ function Cart({ cartItems,onRemoveFromCart }) {
   return (
     <div className="cart">
       <h2>Shopping Cart</h2>
-      <ul>
+      <div>
+      <ul className='selected-items-list'>
         {cartItems.map((item) => (
-          <li key={Math.floor(Math.random()*10000)}>
-            {item.name} - Quantity: {item.quantity}
-            <button onClick={() => onRemoveFromCart(item)}>Remove</button>
+          <li className='items' key={Math.floor(Math.random()*10000)}>
+            <div>{item.name} - Quantity: {item.quantity}</div>
+            <button onClick={() => onRemoveFromCart(item)}>-</button>
           </li>
         ))}
       </ul>
+      </div>
+      
       <button onClick={() => handleProceedToCheckout()}>Proceed to Checkout</button>
     </div>
   );

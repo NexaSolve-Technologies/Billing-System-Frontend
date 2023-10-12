@@ -43,23 +43,29 @@ function ProductPage(){
   }; 
 
   return(
-    <div className="product-page">
-      <div className="product-section">
-        <h2>Products</h2>
-        <div className="product-container"> 
+    <div>
+      <div className='nav-div'>
+                <nav className='navb' >
+                <div>Your Logo</div>
+                </nav>
+      </div>
+
+      <div className="product-page">
+        
+          <div className="product-container"> 
             <ProductCard onAddToCart={handleAddToCart} />
-        </div>
-      </div>
-      <div className="package-section">
-        <h2>Packages</h2>
-        <div className="package-container">
-            <PackageCard onAddToCart={handleAddToCart}/> 
-        </div>
-      </div>
-      <div className='cart-on-productpage'>
-      <Cart cartItems={cartItems} onRemoveFromCart={handleRemoveFromCart} />
+          </div>
+          <div className="package-container">
+              <PackageCard onAddToCart={handleAddToCart}/> 
+          </div>
+          
+          <div className='cart-on-productpage'>
+            <Cart cartItems={cartItems} onRemoveFromCart={handleRemoveFromCart} />
+          </div>
       </div>
     </div>
+
+    
   );
 }
 
