@@ -15,9 +15,17 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
+import { addPackage } from '../../api/packages';
 
 function NewPackage(){
     const [products, setProducts] = useState([]);
+    const [pack, setPack] = useState({
+        name : '',
+        price :'',
+        description : '',
+        products : [],
+        image : null,
+    });
         const token = getToken('token');
         const Navigate = useNavigate();
         const [selectedProducts, setSelectedProducts] = useState([]);
@@ -35,42 +43,48 @@ function NewPackage(){
             .catch((err) => {
               console.error('Error While Fetching Products', err);
             })
-        }, [token]); 
-      
-      
-        useEffect(() => {
-          FetchedProducts(token)
-            .then((data) => {
-              setProducts(data);
-            })
-            .catch((err) => {
-              console.error('Error While Fetching Products', err);
-            });
+        }, [token]);  
 
-        }, [token]);
-
+    const handleInputChange = (e) => {
+        const {name, value} = e.target;
+        setPack({
+            ...pack,
+            [name] : value,
+        })
+    }
 
         const handleAddProduct = (product) => {
-            setSelectedProducts((prevSelectedProducts) => [
-              ...prevSelectedProducts,
-              product,
-            ]);
-          };
+            let updatedProducts = [...selectedProducts]; 
+            updatedProducts.push(product);
+            setSelectedProducts(updatedProducts);
+          }; 
+          
+    const handleImageChange = (e) => {
+        const imageFile = e.target.files[0];
+        setPack({
+            ...pack,
+            image : imageFile,
+        });
+    }
+          
+    
     const handleSubmit = (e) => {
-
-      
         e.preventDefault();
-        // try {
-        //   console.log(token);
-        //   addProduct(token, product)
-        //     .then((data) => {
-        //       console.log(data);
-        //     })
-        // } catch (err) {
-        //   console.error(err);
-        //   setErrorMessage('An error Occurred. Please try again later.')
-        // }
-      };
+        try {
+            const productIds = selectedProducts.map(product => product._id);
+            const updatedPack = {
+                ...pack,
+                products : productIds,
+            }
+            console.log(updatedPack);
+            addPackage(token, updatedPack)
+                .then((data) => {
+                    console.log(data);
+                })
+        } catch (err) {
+            console.error(err);
+        }
+    };
 
 
     return(
@@ -113,8 +127,8 @@ function NewPackage(){
                                 label="Package Name"
                                 id="name"
                                 name="name"
-                                // value={product.name}
-                                // onChange={handleInputChange}
+                                value={pack.name}
+                                onChange={handleInputChange}
                                 required
                                 fullWidth
                             />
@@ -124,8 +138,8 @@ function NewPackage(){
                                 label="Price"
                                 id="price"
                                 name="price"
-                                // value={product.price}
-                                // onChange={handleInputChange}
+                                value={pack.price}
+                                onChange={handleInputChange}
                                 required
                                 fullWidth
                             />
@@ -135,8 +149,8 @@ function NewPackage(){
                                 label="Description"
                                 id="description"
                                 name="description"
-                                // value={product.description}
-                                // onChange={handleInputChange}
+                                value={pack.description}
+                                onChange={handleInputChange}
                                 required
                                 fullWidth
                                 multiline
@@ -149,7 +163,7 @@ function NewPackage(){
                                 id="image"
                                 name="image"
                                 accept="image/*"
-                                // onChange={handleImageChange}
+                                onChange={handleImageChange}
                                 required
                             />
                             </div>
@@ -157,6 +171,7 @@ function NewPackage(){
                             type="submit"
                             fullWidth
                             variant="contained"
+                            onChange={handleSubmit}
                             sx={{
                                 mt: 3,
                                 mb: 2,

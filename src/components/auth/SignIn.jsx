@@ -15,6 +15,7 @@ import InputAdornment from '@mui/material/InputAdornment';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import { signinUser } from '../../api/users';
+import './SignIn.css'
 
 
 // TODO remove, this demo shouldn't need to reset the theme.
@@ -58,26 +59,34 @@ export default function SignIn() {
   };
 
   return (
-    <ThemeProvider theme={defaultTheme}>
-      <Container component="main" maxWidth="xs">
+    <div >
+      <div>
+        <nav className='navb' >
+          <div>Your Logo</div>
+        </nav>
+      </div>
+      <div className='background-image'>
+      <div className='sigin-container'>
+        <ThemeProvider theme={defaultTheme}>
+        <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
           sx={{
-            marginTop: 8,
+            marginTop:2,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
             background: 'color',
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+          <Avatar sx={{  bgcolor: 'secondary' }}>
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-            <TextField
+            <TextField 
               margin="normal"
               required
               fullWidth
@@ -122,13 +131,14 @@ export default function SignIn() {
               type="submit"
               fullWidth
               variant="contained"
-              sx={{ mt: 3, mb: 2 }}
+              sx={{ mt: 3, mb: 2 ,bgcolor:'#FC8019'}}
+
             >
               Sign In
             </Button>
             <Grid container>
               <Grid item>
-                <Link href="/signup" variant="body2">
+                <Link sx={{color:'#FC8019'}} href="/signup" variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
@@ -136,6 +146,11 @@ export default function SignIn() {
           </Box>
         </Box>
       </Container>
-    </ThemeProvider>
+    </ThemeProvider></div>
+      
+      </div>
+      
+    </div>
+    
   );
 }

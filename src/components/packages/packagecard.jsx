@@ -35,7 +35,7 @@ function PackageCard({ onAddToCart }) {
           <div className="package-card" key={pack._id}>
             <h3>{pack.name}</h3>
             <p>Description: {pack.description}</p>
-            <p>Price: {pack.customPrice}</p>
+            <p>Price: {pack.price}</p>
             <input
               type="number"
               min="1"
