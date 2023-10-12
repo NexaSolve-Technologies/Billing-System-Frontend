@@ -5,11 +5,13 @@ import Cart from '../cart/cart';
 import PackageCard from '../packages/packagecard';
 import './productpage.css';
 import { getToken, removeToken } from '../../utils/auth';
+import { linkClasses } from '@mui/material';
 
 function ProductPage(){
   const token = getToken('token');
   const Navigate = useNavigate();
-
+  const [cartItems,setCartItems]=useState([]);
+  
   const initialProducts = [
     { id: 1, title: 'Product 1', description: 'Description 1' },
   ];
@@ -20,24 +22,20 @@ function ProductPage(){
 
   const [products] = useState(initialProducts);
   const [packages] = useState(initialPackages);
-  const [cartItems, setCartItems] = useState([]);
-
-  const handleAddToCart=(itemData, quantity)=>{
-    const existingItem = cartItems.find((item)=> item.id === itemData.id);
+  // add to cart func
+  const handleAddToCart =(itemData)=>{
+    const existingItem=cartItems.find((item)=>item.id===itemData.id);
 
     if(existingItem){
-      setCartItems((prevCartItems)=> 
-        prevCartItems.map((item)=>
-          item.id === itemData.id
-          ? { ...item, quantity: item.quantity + quantity }
-          : item
-        )
-      );
+      setCartItems((prevCartItems)=>
+      prevCartItems.map((item)=>
+      item.id===itemData.id
+      ?{...item,quantity:item.quantity+1}
+      :item
+      )
+    );
     }else{
-      setCartItems((prevCartItems)=> [
-        ...prevCartItems,
-        { ...itemData, quantity },
-      ]);
+      setCartItems((prevCartItems)=>[...prevCartItems,{...itemData,quantity:1}]);
     }
   };
 
@@ -79,9 +77,12 @@ function ProductPage(){
           ))}
         </div>
       </div>
+      <div className='cart-on-productpage'>
       <Cart cartItems={cartItems} onRemoveFromCart={handleRemoveFromCart} onProceedToPay={handleProceedToPay}/>
+      </div>
     </div>
   );
 }
+
 
 export default ProductPage;

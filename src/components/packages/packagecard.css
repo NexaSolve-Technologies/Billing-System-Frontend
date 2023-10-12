@@ -2,9 +2,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    /* width: 100px; */
   }
   
   .package-cards {
+    /* width: 100px; */
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
