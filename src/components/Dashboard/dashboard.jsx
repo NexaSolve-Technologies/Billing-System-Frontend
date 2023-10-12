@@ -5,7 +5,9 @@ import ListItemButton from '@mui/material/ListItemButton';
 import Divider from '@mui/material/Divider';
 import Button from '@mui/material/Button';
 import './dashboard.css';
+import { Link } from 'react-router-dom';
 import backgroundImg from'../../assets/pexels-alexy-almond-3756523.jpg'
+import ProductPage from '../products/productpage';
 
 function Dashboard() {
 
@@ -29,9 +31,12 @@ function Dashboard() {
       <div>
         <nav className='navb'>
           <div>Your Logo</div>
-          <Button variant="contained" style={signInButtonStyle}>
+          <Link to="/signin">
+          <Button to="/signin" variant="contained" style={signInButtonStyle}>
             Login
           </Button>
+          </Link>
+          
         </nav>
       </div>
 
@@ -43,13 +48,13 @@ function Dashboard() {
       <div className='sidebar'>
         <div className='options-list'>
           <List>
-            <ListItemButton style={listItemStyle}>Edit Your Profile</ListItemButton>
+            {/* <ListItemButton style={listItemStyle}>Edit Your Profile</ListItemButton>
+            <Divider style={{ backgroundColor: '#FFF2E8' }} /> */}
+            <ListItemButton style={listItemStyle}to="/newproduct">Add Product</ListItemButton>
             <Divider style={{ backgroundColor: '#FFF2E8' }} />
-            <ListItemButton style={listItemStyle}>Add Product</ListItemButton>
+            <ListItemButton style={listItemStyle}to="/newpackage">Add Package</ListItemButton>
             <Divider style={{ backgroundColor: '#FFF2E8' }} />
-            <ListItemButton style={listItemStyle}>Add Package</ListItemButton>
-            <Divider style={{ backgroundColor: '#FFF2E8' }} />
-            <ListItemButton style={listItemStyle}>View Packages</ListItemButton>
+            <ListItemButton style={listItemStyle} to="/productpage">View Packages</ListItemButton>
           </List>
         </div>
       </div>
