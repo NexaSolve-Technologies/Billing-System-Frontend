@@ -16,3 +16,18 @@ export const FetchedPackages = async (token) => {
         throw err;
     }
 }
+
+export const addPackage = async (token, data) => {
+    try {
+        const response = await axios.post(`${BASE_URL}/package/addNewPackage`, data, {
+            headers : {
+                'Content-Type' : 'multipart/form-data',
+                Authorization : token,
+            }
+        })
+        return response.data;
+    } catch (err) {
+        console.log(err);
+        throw err;
+    }
+}
