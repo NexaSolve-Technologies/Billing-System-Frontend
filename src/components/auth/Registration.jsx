@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -14,62 +14,62 @@ import InputAdornment from '@mui/material/InputAdornment';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import {registerUser} from '../../api/users'
+import { registerUser } from '../../api/users';
 import backgroundImg from '../../assets/pexels-alexy-almond-3756523.jpg';
-
 
 const defaultTheme = createTheme();
 
 export default function SignUp() {
-  const [showPassword, setShowPassword] = React.useState(false);
-  const [errorMessage, setErrorMessage] = React.useState('');
-  const [formData, setFormData] = React.useState({
-    firstName : '',
-    lastName : '',
-    userName : '',
-    phone : '',
-    email : '',
-    password : ''
-  })
-    
+  const [showPassword, setShowPassword] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    userName: '',
+    phone: '',
+    email: '',
+    password: '',
+  });
+
   const handlePasswordVisibilityToggle = () => {
     setShowPassword(!showPassword);
   };
 
   const handleInputChange = (e) => {
-    const { name, value } = e.target; 
+    const { name, value } = e.target;
     setFormData({
-        ...formData,
-        [name]:value,
+      ...formData,
+      [name]: value,
     });
-  } 
-  
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-        await registerUser(formData);
+      await registerUser(formData);
     } catch (err) {
       if (err.response && err.response.status === 404) {
-        setErrorMessage('User Already exists.')
+        setErrorMessage('User Already exists.');
       } else {
         console.error('Sign In Failed :', err);
         setErrorMessage('An error occurred while signing in. Please try again.');
       }
     }
-};
+  };
 
   return (
-    <Container component="main" maxWidth="100vw" sx={{
-      backgroundImage: `url(${backgroundImg})`,
-        backgroundSize: '100%',
+    <div
+      style={{
+        backgroundImage: `url(${backgroundImg})`,
+        backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
-        backgroundPosition:'center',
-        minHeight:'100vh',
-        marginTop:'0px',
-        backdropFilter:'blur(8px)',
-        // marginBottom:'90px',
-    }}>
-    <ThemeProvider theme={defaultTheme}>
+        backgroundPosition: 'center',
+        minHeight: '100vh',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}
+    >
       <Container maxWidth="xs">
         <CssBaseline />
         <Box
@@ -78,6 +78,9 @@ export default function SignUp() {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
+            backgroundColor:'white',
+            borderRadius:'10px',
+            padding:'20px',
           }}
         >
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
@@ -88,8 +91,8 @@ export default function SignUp() {
           </Typography>
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
-              <Grid item xs={12} sm={6}>
-                <TextField
+            <Grid item xs={12} sm={6}>
+                 <TextField
                   autoComplete="given-name"
                   name="firstName"
                   required
@@ -198,7 +201,6 @@ export default function SignUp() {
           </Box>
         </Box>
       </Container>
-    </ThemeProvider>
-    </Container>
+      </div>
   );
 }
