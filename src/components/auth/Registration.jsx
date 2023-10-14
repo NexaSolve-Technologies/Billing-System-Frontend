@@ -47,6 +47,7 @@ export default function SignUp() {
     event.preventDefault();
     try {
       await registerUser(formData);
+      alert('User Created');
     } catch (err) {
       if (err.response && err.response.status === 404) {
         setErrorMessage('User Already exists.');
@@ -159,7 +160,7 @@ export default function SignUp() {
                   name="password"
                   value={formData.password}
                   onChange={handleInputChange}
-                  label="Password"
+                  label="Password (minimum 6 letters)"
                   type={showPassword ? 'text' : 'password'}
                   id="password"
                   autoComplete="new-password"
@@ -191,13 +192,6 @@ export default function SignUp() {
             >
               Sign Up
             </Button>
-            <Grid container justifyContent="flex-end">
-              <Grid item>
-                <Link href="#" variant="body2">
-                  Already have an account? Sign in
-                </Link>
-              </Grid>
-            </Grid>
           </Box>
         </Box>
       </Container>

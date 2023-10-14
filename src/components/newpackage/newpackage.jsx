@@ -81,6 +81,10 @@ function NewPackage(){
                 .then((data) => {
                     console.log(data);
                 })
+                .then(() => {
+                    alert('Product Added');
+                })
+            
         } catch (err) {
             console.error(err);
         }
@@ -154,17 +158,6 @@ function NewPackage(){
                                 required
                                 fullWidth
                                 multiline
-                            />
-                            </div>
-                            <div>
-                            <label htmlFor="image">Image:</label>
-                            <input
-                                type="file"
-                                id="image"
-                                name="image"
-                                accept="image/*"
-                                onChange={handleImageChange}
-                                required
                             />
                             </div>
                             <Button
