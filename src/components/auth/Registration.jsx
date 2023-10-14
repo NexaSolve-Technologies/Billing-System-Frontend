@@ -16,6 +16,7 @@ import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { registerUser } from '../../api/users';
 import backgroundImg from '../../assets/pexels-alexy-almond-3756523.jpg';
+import './Registration.css'
 
 const defaultTheme = createTheme();
 
@@ -70,15 +71,22 @@ export default function SignUp() {
         alignItems: 'center',
       }}
     >
-      <Container maxWidth="xs">
+      <div>
+        <nav className='navb' >
+          <div>Your Logo</div>
+        </nav>
+      </div>
+      <div className='register-container'>
+        <ThemeProvider theme={defaultTheme}>
+        <Container maxWidth="xs" >
         <CssBaseline />
         <Box
+          
           sx={{
             marginTop: 0,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            backgroundColor:'white',
             borderRadius:'10px',
             padding:'20px',
           }}
@@ -89,7 +97,7 @@ export default function SignUp() {
           <Typography component="h1" variant="h5">
             Sign up
           </Typography>
-          <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+          <Box component="form"  noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
                  <TextField
@@ -201,6 +209,10 @@ export default function SignUp() {
           </Box>
         </Box>
       </Container>
+      </ThemeProvider>
+
+      </div>
+      
       </div>
   );
 }
