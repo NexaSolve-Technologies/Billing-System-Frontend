@@ -34,8 +34,7 @@ function NewProduct() {
   const handleSubmit = (e) => {
     e.preventDefault();
     try {
-      console.log(token);
-      addProduct(token, product)
+        addProduct(token, product)
         .then((data) => {
           console.log(data);
         })

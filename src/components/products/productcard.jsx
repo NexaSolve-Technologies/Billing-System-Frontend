@@ -9,7 +9,6 @@ import { BatteryFull } from '@mui/icons-material';
 
 function ProductCard({onAddToCart}) {
   const [products, setProducts] = useState([]);
-  const [cartItems, setCartItems] = useState([]);
   // const [quantity, setQuantity] = useState(1);
   const token = getToken('token');
   const Navigate = useNavigate();
