@@ -10,6 +10,8 @@ import Dashboard from './components/Dashboard/dashboard';
 import NewProduct from './components/newproduct/newproduct';
 import NewPackage from './components/newpackage/newpackage';
 import DeletePage from './pages/DeletePackages/deletepage';
+import ServiceCard from './components/servicespage/services';
+import NewService from './components/newservice/newservice';
 
 function App() {
   return (
@@ -23,7 +25,9 @@ function App() {
         <Route path='/newproduct' element={<NewProduct/>}></Route>
         <Route path='/newpackage' element={<NewPackage/>}></Route>
         <Route path='/deletepage' element={<DeletePage />} ></Route>
-
+        <Route path='/servicecard' element={<ServiceCard/>}></Route>
+        {/* <Route path='/newservice' element={<NewService/>}></Route> */}
+        <Route path='/deletedata' element={<DeletePage/>}></Route>
       </Routes>
     </Router>
   )
