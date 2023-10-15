@@ -16,6 +16,8 @@ import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { registerUser } from '../../api/users';
 import backgroundImg from '../../assets/pexels-alexy-almond-3756523.jpg';
+import { useNavigate } from 'react-router-dom';
+import './Registration.css';
 
 const defaultTheme = createTheme();
 
@@ -30,6 +32,7 @@ export default function SignUp() {
     email: '',
     password: '',
   });
+  const Navigate = useNavigate();
 
   const handlePasswordVisibilityToggle = () => {
     setShowPassword(!showPassword);
@@ -42,6 +45,10 @@ export default function SignUp() {
       [name]: value,
     });
   };
+  
+  const handleOnBackClick = () => {
+    Navigate('/dashboard');  
+  }
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -71,6 +78,9 @@ export default function SignUp() {
         alignItems: 'center',
       }}
     >
+    <nav className="navb">
+        <Button onClick={handleOnBackClick}>Back</Button>
+      </nav>
       <Container maxWidth="xs">
         <CssBaseline />
         <Box

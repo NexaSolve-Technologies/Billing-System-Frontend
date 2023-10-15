@@ -5,7 +5,7 @@ import Cart from '../cart/cart';
 import PackageCard from '../packages/packagecard';
 import './productpage.css';
 import { getToken, removeToken } from '../../utils/auth';
-import { linkClasses } from '@mui/material';
+import { Button, linkClasses } from '@mui/material';
 
 function ProductPage(){
   const token = getToken('token');
@@ -41,12 +41,16 @@ function ProductPage(){
     
     setCartItems(updatedCart);
   }; 
+  
+  const handleOnBackClick = () => {
+    Navigate('/dashboard');
+  }
 
   return(
     <div>
       <div className='nav-div'>
                 <nav className='navb' >
-                <div>Your Logo</div>
+                <Button onClick={handleOnBackClick} >Back</Button>
                 </nav>
       </div>
 

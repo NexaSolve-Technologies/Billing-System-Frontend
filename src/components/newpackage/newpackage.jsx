@@ -24,7 +24,7 @@ function NewPackage(){
         price :'',
         description : '',
         products : [],
-        image : null,
+        // image : null,
     });
         const token = getToken('token');
         const Navigate = useNavigate();
@@ -59,15 +59,17 @@ function NewPackage(){
             setSelectedProducts(updatedProducts);
           }; 
           
-    const handleImageChange = (e) => {
-        const imageFile = e.target.files[0];
-        setPack({
-            ...pack,
-            image : imageFile,
-        });
-    }
+    // const handleImageChange = (e) => {
+    //     const imageFile = e.target.files[0];
+    //     setPack({
+    //         ...pack,
+    //         image : imageFile,
+    //     });
+    // }
           
-    
+    const handleOnBackClick = () => {
+        Navigate('/dashboard')
+    }
     const handleSubmit = (e) => {
         e.preventDefault();
         try {
@@ -95,7 +97,7 @@ function NewPackage(){
         <div className='newpackage-page'>
             <div className='nav-div'>
                 <nav className='navb' >
-                <div>Your Logo</div>
+                <Button onClick={handleOnBackClick} >Back</Button>
                 </nav>
             </div>
             <div className='main-container'>
