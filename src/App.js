@@ -12,22 +12,23 @@ import NewPackage from './components/newpackage/newpackage';
 import DeletePage from './pages/DeletePackages/deletepage';
 import ServiceCard from './components/servicespage/services';
 import NewService from './components/newservice/newservice';
+import DeleteService from './pages/DeleteService/deleteservice';
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path='/signup' element={<Registration />} />
-        <Route path='/' element={<SignIn />} />
+        <Route path='/signup' element={<Registration/>}/>
+        <Route path='/' element={<SignIn />}/>
         <Route path='/productpage' element={<ProductPage/>}></Route>
         <Route path='/checkout' element={<Checkout selectedProducts={sampleProducts}/>}/>
         <Route path='/dashboard'element={<Dashboard/>}/>
         <Route path='/newproduct' element={<NewProduct/>}></Route>
         <Route path='/newpackage' element={<NewPackage/>}></Route>
-        <Route path='/deletepage' element={<DeletePage />} ></Route>
+        <Route path='/deletepage' element={<DeletePage/>} ></Route>
         <Route path='/servicecard' element={<ServiceCard/>}></Route>
         {/* <Route path='/newservice' element={<NewService/>}></Route> */}
-        <Route path='/deletedata' element={<DeletePage/>}></Route>
+        <Route path="/deleteservice" element={<DeleteService/>}></Route>
       </Routes>
     </Router>
   )

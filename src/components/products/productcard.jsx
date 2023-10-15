@@ -7,7 +7,7 @@ import { getToken } from '../../utils/auth';
 import { BatteryFull } from '@mui/icons-material';
 
 
-function ProductCard({onAddToCart}) {
+function ProductCard({onAddToCart,onRemove}) {
   const [products, setProducts] = useState([]);
   // const [quantity, setQuantity] = useState(1);
   const token = getToken('token');
@@ -46,6 +46,7 @@ function ProductCard({onAddToCart}) {
             <p>Description: {product.description}</p>
             <p>Price: {product.price}</p>
             <button onClick={() => handleAddToCart(product)}>Add to Cart</button>
+            <button onClick={() => onRemove(product._id)}>Remove</button>
           </div>
         ))}
       </div>

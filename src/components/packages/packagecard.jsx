@@ -3,7 +3,7 @@ import './packagecard.css';
 import { getToken } from '../../utils/auth';
 import { FetchedPackages } from '../../api/packages';
 
-function PackageCard({ onAddToCart }) {
+function PackageCard({ onAddToCart, onRemove}) {
   const [quantity, setQuantity] = useState(1);
   const [packages, setPackages] = useState([]);
   const token = getToken('token'); 
@@ -36,7 +36,7 @@ function PackageCard({ onAddToCart }) {
             <h3>{pack.name}</h3>
             <p>Description: {pack.description}</p>
             <p>Price: {pack.price}</p>
-            
+            <button onClick={() => onRemove(pack._id)}>Remove</button>
             <button onClick={() => handleAddToCart(pack)}>Add to Cart</button>
           </div>
         ))}
