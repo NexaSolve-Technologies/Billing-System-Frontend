@@ -21,7 +21,6 @@ export const addPackage = async (token, data) => {
     try {
         const response = await axios.post(`${BASE_URL}/package/addNewPackage`, data, {
             headers : {
-                'Content-Type' : 'multipart/form-data',
                 Authorization : token,
             }
         })

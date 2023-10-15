@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { TextField, Button } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 import './newproduct.css';
 import { getToken } from '../../utils/auth';
 import { addProduct } from '../../api/products';
@@ -11,8 +12,9 @@ function NewProduct() {
     name: '',
     price: '',
     description: '',
-    image: null,
+    // image: null,
   });
+  const Navigate = useNavigate();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -22,22 +24,24 @@ function NewProduct() {
     });
   };
 
-  const handleImageChange = (e) => {
-    const imageFile = e.target.files[0];
-    setProduct({
-      ...product,
-      image: imageFile,
-    });
-  };
+  // const handleImageChange = (e) => {
+  //   const imageFile = e.target.files[0];
+  //   setProduct({
+  //     ...product,
+  //     image: imageFile,
+  //   });
+  // };
   
     
+  const handleOnBackClick = () => {
+    Navigate('/dashboard');
+  }
   const handleSubmit = (e) => {
     e.preventDefault();
     try {
-      console.log(token);
-      addProduct(token, product)
-        .then((data) => {
-          console.log(data);
+        addProduct(token, product)
+        .then(() => {
+          alert('Product Created');
         })
     } catch (err) {
       console.error(err);
@@ -48,7 +52,7 @@ function NewProduct() {
   return (
     <div>
       <nav className="navb">
-        <div>Your Logo</div>
+        <Button onClick={handleOnBackClick}>Back</Button>
       </nav>
       <div className="container-content">
         <div className="form-container">
@@ -86,17 +90,6 @@ function NewProduct() {
                 required
                 fullWidth
                 multiline
-              />
-            </div>
-            <div>
-              <label htmlFor="image">Image:</label>
-              <input
-                type="file"
-                id="image"
-                name="image"
-                accept="image/*"
-                onChange={handleImageChange}
-                required
               />
             </div>
             <Button

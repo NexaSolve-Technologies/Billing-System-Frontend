@@ -5,6 +5,10 @@
     padding-top: 50px;
     background-repeat: no-repeat;
   } */
+  
+.navb{
+  width: 100%;
+}
 
 .register-container{
   position: relative;

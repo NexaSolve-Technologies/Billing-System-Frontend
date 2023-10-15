@@ -30,13 +30,7 @@ function Dashboard() {
     <div className='dashboard-bg' >
       <div>
         <nav className='navb'>
-          <div>Your Logo</div>
-          <Link to="/signin">
-          <Button to="/signin" variant="contained" style={signInButtonStyle}>
-            Login
-          </Button>
-          </Link>
-          
+          <div>Your Logo</div>          
         </nav>
       </div>
 
@@ -50,6 +44,8 @@ function Dashboard() {
           <List>
             {/* <ListItemButton style={listItemStyle}>Edit Your Profile</ListItemButton>
             <Divider style={{ backgroundColor: '#FFF2E8' }} /> */}
+            <ListItemButton style={listItemStyle}to="/signup" >Add Admin</ListItemButton>
+            <Divider style={{ backgroundColor: '#FFF2E8' }}/>
             <ListItemButton style={listItemStyle}to="/newproduct">Add Product</ListItemButton>
             <Divider style={{ backgroundColor: '#FFF2E8' }} />
             <ListItemButton style={listItemStyle}to="/newpackage">Add Package</ListItemButton>

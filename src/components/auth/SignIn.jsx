@@ -14,6 +14,7 @@ import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import { useNavigate } from 'react-router-dom';
 import { signinUser } from '../../api/users';
 import './SignIn.css'
 
@@ -29,6 +30,7 @@ export default function SignIn() {
     email : '',
     password : ''
   })
+  const Naviagte = useNavigate();
   
 
   const handlePasswordVisibilityToggle = () => {
@@ -47,6 +49,7 @@ export default function SignIn() {
     event.preventDefault();
     try {
       await signinUser(formData)
+      Naviagte('/dashboard');
     } catch (err) {
       if(err.response && err.response.status === 401) {
         setErrorMessage('Invalid Credentials. Please Check your email and password'); 
@@ -137,11 +140,6 @@ export default function SignIn() {
               Sign In
             </Button>
             <Grid container>
-              <Grid item>
-                <Link sx={{color:'#FC8019'}} href="/signup" variant="body2">
-                  {"Don't have an account? Sign Up"}
-                </Link>
-              </Grid>
             </Grid>
           </Box>
         </Box>

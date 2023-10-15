@@ -16,7 +16,8 @@ import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { registerUser } from '../../api/users';
 import backgroundImg from '../../assets/pexels-alexy-almond-3756523.jpg';
-import './Registration.css'
+import { useNavigate } from 'react-router-dom';
+import './Registration.css';
 
 const defaultTheme = createTheme();
 
@@ -31,6 +32,7 @@ export default function SignUp() {
     email: '',
     password: '',
   });
+  const Navigate = useNavigate();
 
   const handlePasswordVisibilityToggle = () => {
     setShowPassword(!showPassword);
@@ -43,11 +45,16 @@ export default function SignUp() {
       [name]: value,
     });
   };
+  
+  const handleOnBackClick = () => {
+    Navigate('/dashboard');  
+  }
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
       await registerUser(formData);
+      alert('User Created');
     } catch (err) {
       if (err.response && err.response.status === 404) {
         setErrorMessage('User Already exists.');
@@ -71,14 +78,10 @@ export default function SignUp() {
         alignItems: 'center',
       }}
     >
-      <div>
-        <nav className='navb' >
-          <div>Your Logo</div>
-        </nav>
-      </div>
-      <div className='register-container'>
-        <ThemeProvider theme={defaultTheme}>
-        <Container maxWidth="xs" >
+    <nav className="navb">
+        <Button onClick={handleOnBackClick}>Back</Button>
+      </nav>
+      <Container maxWidth="xs">
         <CssBaseline />
         <Box
           
@@ -167,7 +170,7 @@ export default function SignUp() {
                   name="password"
                   value={formData.password}
                   onChange={handleInputChange}
-                  label="Password"
+                  label="Password (minimum 6 letters)"
                   type={showPassword ? 'text' : 'password'}
                   id="password"
                   autoComplete="new-password"
@@ -199,19 +202,9 @@ export default function SignUp() {
             >
               Sign Up
             </Button>
-            <Grid container justifyContent="flex-end">
-              <Grid item>
-                <Link href="#" variant="body2">
-                  Already have an account? Sign in
-                </Link>
-              </Grid>
-            </Grid>
           </Box>
         </Box>
       </Container>
-      </ThemeProvider>
-
-      </div>
       
       </div>
   );

@@ -20,8 +20,7 @@ export const addProduct = async (token, data) => {
     try {
         const response = await axios.post(`${BASE_URL}/product/addNewProduct`, data, {
             headers : {
-                'Content-Type' : 'multipart/form-data',
-                Authorization : token,
+               Authorization : token,
             },
         });
         return response.data
